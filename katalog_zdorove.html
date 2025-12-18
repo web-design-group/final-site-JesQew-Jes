@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="index.css">
+    <title>DELTA-Dream - Каталог здоровья</title>
+    <style>
+
+        .add-to-cart-animation {
+            animation: addToCart 0.3s ease;
+        }
+        
+        @keyframes addToCart {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+                background-color: #2a8db3;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 15px 40px;
+            background-color: #616161;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Railway', sans-serif;
+            font-weight: 600;
+            font-size: 5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            background-color: #38ADD8;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background-color: #38ADD8;
+        }
+
+        .catalog-title {
+            font-family: 'Calypso', sans-serif;
+            font-weight: 500;
+            font-size: 8rem;
+            color: #616161;
+            
+            margin: 40px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main class="page_content">
+            <header class="header">
+                <nav class="nav1">
+                    <div class="logo">DELTA-Dream</div>    
+                    <a href="katalog.html">Каталог</a>
+                    <a href="index.html" class="nav_link">О нас</a>
+                    <a href="index.html#blog" class="nav_link">Блог</a>
+                    <a href="index.html#contact" class="nav_link">Контакты</a>
+                </nav>
+                <nav class="nav2">
+                    <a href="cart.html" class="nav_link" id="cart-link">
+                        <img src="./src/assets/icons/Корзина.svg" alt="корзина" class="first-display">
+                    </a>
+                    <img src="./src/assets/icons/Профиль.svg" alt="профиль" class="first-display">
+                    <a href="#" class="nav_link">Вход</a>
+                </nav>
+            </header>
+
+
+            <h1 class="catalog-title">КАТАЛОГ</h1>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn" onclick="window.location.href='katalog.html'">
+                    СПАЛЬНЯ
+                </button>
+                <button class="filter-btn active" onclick="window.location.href='katalog _zdorove.html'">
+                    ЗДОРОВЬЕ
+                </button>
+                <button class="filter-btn active" onclick="window.location.href='katalog_vanna.html'">
+                    ВАННАЯ
+                </button>
+            </div>
+
+
+            <div class="projects" id="katalog">
+                <div class="projects_list">
+                    <div class="card">
+                        <div class="card_content">
+                            <a href="id_collagen.html" class="nav_link">
+                                <img src="src/assets/image/коллаген.png" alt="Collagen" class="card_img">
+                            </a>
+                            
+                            <h4 class="card_title_p">Коллаген</h4>
+                            <p class="card_description">Биологически активная добавка (БАД) к пище</p>
+                            <button class="btn btn_round add-to-cart-btn" 
+                                    data-product-id="4" 
+                                    data-product-name="Коллаген" 
+                                    data-product-price="3999" 
+                                    data-product-image="src/assets/image/коллаген.png">
+                                3 999 ₽
+                            </button>
+                        </div>
+                        <div class="card_content">
+                            <a href="id_clorofill.html" class="nav_link">
+                                <img src="src/assets/image/хлорофил.png" alt="Clorofill" class="card_img">
+                            </a>
+                            
+                            <h4 class="card_title_p">Хлорофилл</h4>
+                            <p class="card_description">Биологически активная добавка (БАД) к пище</p>
+                            <button class="btn btn_round add-to-cart-btn" 
+                                    data-product-id="5" 
+                                    data-product-name="Хлорофилл" 
+                                    data-product-price="4999" 
+                                    data-product-image="src/assets/image/хлорофил.png">
+                                4 999 ₽
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo">DELTA-Dream</div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>Для спальни</li>
+                    <li>Для ванны</li>
+                    <li>Для здоровья</li>
+                </ul>
+            </div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>Подробнее</li>
+                    <li>Блог</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>VK</li>
+                    <li>Telegram</li>
+                    <li>Instagram</li>   
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">Ksenia Krylova 2025</div> 
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const cartLink = document.getElementById('cart-link');
+
+            function getCart() {
+                const cart = localStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : [];
+            }
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+            function animateButton(button) {
+                button.classList.add('add-to-cart-animation');
+                setTimeout(() => {
+                    button.classList.remove('add-to-cart-animation');
+                }, 300);
+            }
+            function addToCart(product) {
+                const cart = getCart();
+                const existingItemIndex = cart.findIndex(item => item.id === product.id);
+                
+                if (existingItemIndex !== -1) {
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                }
+                saveCart(cart);
+            }
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = {
+                        id: parseInt(this.getAttribute('data-product-id')),
+                        name: this.getAttribute('data-product-name'),
+                        price: parseInt(this.getAttribute('data-product-price')),
+                        image: this.getAttribute('data-product-image')
+                    };
+                    
+                    addToCart(product);
+                    animateButton(this);
+                });
+            });
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                logo.style.cursor = 'pointer';
+            }
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.textContent.trim() === 'ЗДОРОВЬЕ') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

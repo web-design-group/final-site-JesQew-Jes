@@ -1,0 +1,296 @@
+@font-face {
+    font-family: 'CAlYPSO';
+    src: url(./src/assets/fonts/Calypso.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 600;
+}
+
+:root {
+    --gray:#D9D9D9;
+    --dark-grey:#616161;
+    --size-base: 4px;
+    --content-width-max: 1360px;
+    --header-height: 50px;
+}
+
+html {
+    font-size: 4px;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    font-size: 4rem;
+    padding-top: var(--header-height);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+.logo{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 12rem;
+}
+
+.a{
+    color: #616161;
+}
+
+.nav1, .nav2{
+    font-family:'Railway';
+    font-size: 5rem;
+}
+
+.card_title{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_title1{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_description{
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 5rem;
+}
+
+.card_title_p{
+    font-family: 'Railway';
+    font-weight: 700;
+    font-size: 6rem;
+}
+
+.card_title1{
+    font-family: 'Railway';
+    font-weight: 600;
+    font-size: 6rem;
+}
+
+.card_title2{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  position: relative;
+
+  
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+
+  padding: calc(var(--size-base)*30) 0 calc(var(--size-base)*70);
+  row-gap: calc(var(--size-base)*25);
+  width: 100%;
+  max-width: var(--content-width-max);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.nav1 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav2 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav1 a, .nav2 a {
+            text-decoration: none;
+            color:#616161;
+            padding: calc(var(--size-base)*2) calc(var(--size-base)*4);            
+            transition: all 0.3s ease;
+        }
+
+        .nav1 a:hover, .nav2 a:hover {
+            color:#38ADD8;
+            transform: translateY(-2px);
+        }
+
+.nav2 img {
+    width: 6rem;
+    height: 6rem;    
+    transition: all 0.3s ease;
+    
+}
+
+.nav2 img:hover {    
+    transform: scale(1.1);
+}
+
+
+
+.nav2 .nav_link:hover {
+    color:#38ADD8;
+    transform: translateY(-2px);
+}
+
+.first-display_button {
+    display: grid;
+    place-items: center;
+}
+
+.projects {
+    display: grid;
+    margin-bottom: calc(var(--size-base)*20);
+}
+
+.projects_list {
+    display: grid;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--size-base)*5);
+    margin-bottom: calc(var(--size-base)*15);
+    justify-content: center;
+    max-width: calc( var(--size-base)*340);
+}
+
+.card_content {
+    display: grid;
+    justify-content: center;
+    gap: calc(var(--size-base)*4);
+    padding: calc(var(--size-base)*6);
+}
+
+.card_content1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--size-base)*4);
+    padding: calc(var(--size-base)*6);
+}
+
+
+
+.card_description {
+    
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 5rem;
+    color: #616161;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.btn {
+    padding: calc(var(--size-base)*1) calc(var(--size-base)*2);
+    border-radius: calc(var(--size-base)*8);
+    background-color: #616161;
+    color: white;
+    font-size: 6rem;
+    font-family: 'Railway';
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #38ADD8; 
+    transform: translateY(-2px);
+}
+
+.footer {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background-image: url('/src/assets/img/Footer.png');
+    padding: calc(var(--size-base)*15) calc(var(--size-base)*50);
+    margin-top: calc(var(--size-base)*10);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, auto);
+    gap: calc(var(--size-base)*15);
+    max-width: var(--content-width-max);
+    margin: 0 auto;
+}
+
+.footer .logo {
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 24rem;
+    color: #616161;
+}
+
+.copyright {
+    display: grid;
+    place-items: center;
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 4rem;
+    color: #616161;
+    margin: 0;
+    padding: calc(var(--size-base)*5) 0;
+}
+
+.footer_colomn ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: calc(var(--size-base)*2);
+}
+
+.footer_colomn li {
+    font-family: 'Railway';
+    font-weight: 400;
+    font-size: 4.5rem;
+    color: #616161;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.footer_colomn li:hover {
+    color: #38ADD8;
+}
+
+.socials {
+    display: grid;
+}

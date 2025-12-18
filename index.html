@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="index.css">
+    <title>DELTA-Dream</title>
+
+</head>
+<body>
+    <div class="page">
+        <main class="page_content">
+            <header class="header">
+                <nav class="nav1">
+                    <div class="logo">DELTA-Dream</div>    
+                    <a href="katalog.html" class="nav_link">Каталог</a>
+                    <a href="#o_nas" class="nav_link">О нас</a>
+                    <a href="#blog" class="nav_link">Блог</a>
+                    <a href="#contact" class="nav_link">Контакты</a>
+                </nav>
+                <nav class="nav2">
+                    <a href="cart.html" class="nav_link" id="cart-link">
+                        <img src="./src/assets/icons/Корзина.svg" alt="корзина" class="first-display">
+                    </a>
+                    <img src="./src/assets/icons/Профиль.svg" alt="профиль" class="first-display">
+                    <a href="#" class="nav_link">Вход</a>
+                </nav>
+            </header>
+            
+            <div class="first-display">
+                <img src="./src/assets/image/фоновая_первая.jpg" alt="кровать" class="first-display">
+            </div>
+            
+            <section class="projects">
+              
+                <div class="projects_list">
+                    <h3 class="card_title" id="o_nas">О НАС</h3>
+                    <div class="card">
+                        <div class="card_content">
+                            <div class="card_content1">
+                                <p class="card_description">Ручная работа с любовью и научно подтвержденным эффектом. Мы предлагаем широкий выбор натуральных масел, отобранных за их доказанные свойства, способствующие релаксации, снятию стресса, восстанавливающему сну.</p>
+                                <p class="card_description">Откройте для себя мир нежнейшего постельного белья из натуральных тканей, таких как египетский хлопок, лен и шелк. Наши комплекты подарят вам ощущение нежности и комфорта, позволяя коже дышать всю ночь.</p>
+                            </div>
+                            <p class="card_description">Мы поможем вам подобрать идеальную поддержку для головы, шеи и позвоночника, чтобы проснуться отдохнувшим и полным энергии.</p>
+                        </div>
+                        <img src="src/assets/image/хлопок.jpg" alt="хлопок" class="card_img">
+                    </div>
+                    
+                    <h3 class="card_title">НОВИНКИ</h3>
+                    <div class="card">
+                        <div class="card_content">
+                            <a href="id_COMBO_PRO.html" class="nav_link">
+                                <img src="src/assets/image/подушка_комбо.jpg" alt="COMBO" class="card_img">
+                            </a>
+                            <h4 class="card_title_p">Подушка Combo Pro</h4>
+                            <p class="card_description">Комбинированная подушка сочетает в себе преимущества классической и анатомической подушек. Мягкая и комфортная для сна на спине.</p>
+                            <button class="btn btn_round add-to-cart-btn" 
+                                    data-product-id="1" 
+                                    data-product-name="Подушка Combo Pro" 
+                                    data-product-price="4999" 
+                                    data-product-image="src/assets/image/подушка_комбо.jpg">
+                                4 999 ₽
+                            </button>
+                        </div>
+                        
+                        <div class="card_content">
+                            <a href="id_MIRTEC_CAPSULE.html" class="nav_link">
+                                <img src="src/assets/image/подушка_миртек.jpg" alt="MIRTEC" class="card_img">
+                            </a>
+                            <h4 class="card_title_p">Подушка Миртек Capsula</h4>
+                            <p class="card_description">Подушка, внутренняя пухо-перовая, упругие свойства и надежная поддержка, помогают мышцам расслабиться во время сна на боку и спине.</p>
+                            <button class="btn btn_round add-to-cart-btn" 
+                                    data-product-id="2" 
+                                    data-product-name="Подушка Миртек Capsula" 
+                                    data-product-price="5999" 
+                                    data-product-image="src/assets/image/подушка_миртек.jpg">
+                                5 999 ₽
+                            </button>
+                        </div>
+                        
+                        <div class="card_content">
+                            <a href="id_BREEZE.html" class="nav_link">
+                                <img src="src/assets/image/подушка_бриз.jpg" alt="BREEZE" class="card_img">
+                            </a>
+                            <h4 class="card_title_p">Подушка анатомическая Breeze</h4>
+                            <p class="card_description">Она изготовлена из специального материала, эластичного и очень упругого, обладающего так называемым эффектом «памяти».</p>
+                            <button class="btn btn_round add-to-cart-btn" 
+                                    data-product-id="3" 
+                                    data-product-name="Подушка анатомическая Breeze" 
+                                    data-product-price="3999" 
+                                    data-product-image="src/assets/image/подушка_бриз.jpg">
+                                3 999 ₽
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <h3 class="card_title2" id="katalog">КАТАЛОГ</h3>  
+                    <div class="card">
+                        <div class="card_content category-card" onclick="window.location.href='katalog_vanna.html'">
+                            <img src="src/assets/image/для_ванной.png" alt="ванная" class="card_img">
+                            <h4 class="card_title1">
+                                <a href="katalog_vanna.html">ДЛЯ ВАННЫ</a>
+                            </h4>
+                        </div>
+                        <div class="card_content category-card" onclick="window.location.href='katalog.html'">
+                            <img src="src/assets/image/спальня.jpg" alt="СПАЛЬНЯ" class="card_img">
+                            <h4 class="card_title1">
+                                <a href="katalog.html">ДЛЯ СПАЛЬНИ</a>
+                            </h4>                        
+                        </div>
+                        <div class="card_content category-card" onclick="window.location.href='katalog _zdorove.html'">
+                            <img src="src/assets/image/для_здоровья.jpg" alt="здоровье" class="card_img">
+                            <h4 class="card_title1">
+                                <a href="katalog_zdorove.html">ДЛЯ ЗДОРОВЬЯ</a>
+                            </h4>                        
+                        </div>
+                    </div>
+                    
+                    <h3 class="card_title2" id="blog">ОТВЕТЫ НА ВОПРОСЫ</h3>
+                    <div class="faq-container">
+                        <div class="faq-image">
+                            <img src="src/assets/image/о_нас.jpg" alt="О нас" class="faq-img">
+                        </div>
+                        <div class="faq-section">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Как выбрать подушку по типу сна?</span>
+                                    <span class="faq-icon">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Для сна на спине подходят подушки средней высоты, для сна на боку - более высокие подушки, а для сна на животе - низкие и мягкие подушки.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Как ухаживать за постельным бельем?</span>
+                                    <span class="faq-icon">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Рекомендуем стирать при температуре 30-40°C, использовать мягкие моющие средства и избегать отбеливателей. Сушить лучше в естественных условиях.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Есть ли гарантия на вашу продукцию?</span>
+                                    <span class="faq-icon">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Да, на все наши товары предоставляется гарантия от 1 до 3 лет в зависимости от категории товара.</p>
+                                </div>
+                            </div>                 
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="contacts" id="contact"></div>
+        </main>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="logo">DELTA-Dream</div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Для спальни</li>
+                        <li>Для ванны</li>
+                        <li>Для здоровья</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Подробнее</li>
+                        <li>Блог</li>
+                        <li>Контакты</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>VK</li>
+                        <li>Telegram</li>
+                        <li>Instagram</li>   
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">Ksenia Krylova 2025</div> 
+        </footer>          
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const faqQuestions = document.querySelectorAll('.faq-question');        
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+                    const isActive = this.classList.contains('active');
+
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-icon').forEach(i => {
+                        i.textContent = '+';
+                    });
+                    document.querySelectorAll('.faq-answer').forEach(a => {
+                        a.style.maxHeight = null;
+                    });
+                    
+                    if (!isActive) {
+                        this.classList.add('active');
+                        icon.textContent = '−';
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            function getCart() {
+                const cart = localStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : [];
+            }
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+            function animateButton(button) {
+                button.classList.add('add-to-cart-animation');
+                setTimeout(() => {
+                    button.classList.remove('add-to-cart-animation');
+                }, 300);
+            }
+            function addToCart(product) {
+                const cart = getCart();
+                const existingItemIndex = cart.findIndex(item => item.id === product.id);
+                
+                if (existingItemIndex !== -1) {
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                }
+
+                saveCart(cart);
+            }
+
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = {
+                        id: parseInt(this.getAttribute('data-product-id')),
+                        name: this.getAttribute('data-product-name'),
+                        price: parseInt(this.getAttribute('data-product-price')),
+                        image: this.getAttribute('data-product-image')
+                    };
+                    
+                    addToCart(product);
+                    animateButton(this);
+                });
+            });
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                logo.style.cursor = 'pointer';
+            }
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'A') {
+                        const link = this.querySelector('a');
+                        if (link) {
+                            window.location.href = link.getAttribute('href');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

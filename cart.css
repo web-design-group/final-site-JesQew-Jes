@@ -1,0 +1,669 @@
+@font-face {
+    font-family: 'CAlYPSO';
+    src: url(./src/assets/fonts/Calypso.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 600;
+}
+
+
+        .cart-page {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--size-base)*15);
+            max-width: var(--content-width-max);
+            margin: 0 auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: calc(var(--size-base)*8);
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .cart-title {
+            font-family: Calypso;
+            font-weight: 500;
+            font-size: 10rem;
+            color: #616161;
+            margin: 0;
+        }
+        
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--size-base)*8);
+        }
+        
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--size-base)*6);
+            padding: calc(var(--size-base)*8) 0;
+            border-bottom: 1px solid var(--gray);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: calc(var(--size-base)*2);
+            flex-shrink: 0;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            gap: calc(var(--size-base)*4);
+        }
+        
+        .cart-item-title-price {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--size-base)*2);
+            min-width: 200px;
+        }
+        
+        .cart-item-title {
+            font-family: 'Railway';
+            font-weight: 600;
+            font-size: 5.5rem;
+            color: #616161;
+            margin: 0;
+        }
+        
+        .cart-item-price {
+            font-family: 'Railway';
+            font-weight: 600;
+            font-size: 6rem;
+            color: #616161;
+            white-space: nowrap;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--size-base)*8);
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--size-base)*2);
+        }
+        
+        .quantity-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            border: 1px solid var(--dark-grey);
+            background-color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--gray);
+        }
+
+        .quantity-input {
+            width: 70px;
+            height: 44px;
+            text-align: center;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-family: 'Railway';
+            font-size: 5.5rem;
+            font-weight: 600;
+            -moz-appearance: textfield; 
+        }
+        
+
+        .quantity-input::-webkit-outer-spin-button,
+        .quantity-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .quantity-input::-webkit-outer-spin-button,
+        .quantity-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .item-total-price {
+            font-family: 'Railway';
+            font-weight: 600;
+            font-size: 6rem;
+            color: #616161;
+            min-width: 120px;
+            text-align: right;
+            white-space: nowrap;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #b6b6b6;
+            font-family: 'Railway';
+            font-size: 4.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+            padding: calc(var(--size-base)*2);
+        }
+        
+        .remove-btn:hover {
+            color: #afafaf;
+            text-decoration: underline;
+        }
+        
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--size-base)*10);
+            margin-top: calc(var(--size-base)*15);
+            padding-top: calc(var(--size-base)*10);
+            border-top: 1px solid var(--gray);
+        }
+        
+        .cart-totals {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--size-base)*4);
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Railway';
+            font-size: 5rem;
+            color: #616161;
+        }
+        
+        .total-label {
+            font-weight: 300;
+        }
+        
+        .total-value {
+            font-weight: 600;
+        }
+        
+        .grand-total {
+            font-size: 6rem;
+            padding-top: calc(var(--size-base)*4);
+            border-top: 1px solid var(--gray);
+        }
+        
+        .checkout-btn {
+            padding: calc(var(--size-base)*6) calc(var(--size-base)*10);
+            border-radius: calc(var(--size-base)*8);
+            background-color: #4d4d4d;
+            color: white;
+            font-size: 8rem;
+            font-family: 'Railway';
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: calc(var(--size-base)*4);
+            width: 100%;
+            text-align: center;
+        }
+
+        .checkout-btn:hover {
+            background-color: #2a8db3;
+            transform: translateY(-2px);
+        }
+        
+        .checkout-btn:disabled {
+            background-color: #b6b6b6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .checkout-btn:disabled:hover {
+            background-color: #b6b6b6;
+            transform: none;
+        }
+        
+        .total-amount {
+            font-weight: 700;
+            font-size: 8.5rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: calc(var(--size-base)*20) 0;
+            font-family: 'Railway';
+            font-size: 6rem;
+            color: #616161;
+            display: none;
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: calc(var(--size-base)*8);
+            color: #38ADD8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .continue-shopping:hover {
+            text-decoration: underline;
+        }
+        
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-family: 'Railway', sans-serif;
+            font-size: 4.5rem;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+        
+        .notification.warning {
+            background-color: #ff9800;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: calc(var(--size-base)*4);
+                padding: calc(var(--size-base)*6) 0;
+                border-bottom: 1px solid var(--gray);
+            }
+            
+            .cart-item-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .cart-item-info {
+                flex-direction: column;
+                align-items: stretch;
+                gap: calc(var(--size-base)*4);
+            }
+            
+            .cart-item-title-price {
+                min-width: auto;
+                text-align: center;
+            }
+            
+            .cart-item-controls {
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .item-total-price {
+                text-align: center;
+                min-width: auto;
+            }
+            
+            .checkout-btn {
+                font-size: 6rem;
+                padding: calc(var(--size-base)*4) calc(var(--size-base)*6);
+            }
+            
+            .total-amount {
+                font-size: 7rem;
+            }
+        }
+        
+        
+        @media (max-width: 480px) {
+            .cart-item-controls {
+                flex-direction: column;
+                gap: calc(var(--size-base)*4);
+            }
+            
+            .quantity-controls {
+                justify-content: center;
+            }
+            
+            .remove-btn {
+                align-self: center;
+            }
+        }
+:root {
+    --gray:#D9D9D9;
+    --dark-grey:#616161;
+    --size-base: 4px;
+    --content-width-max: 1360px;
+    --header-height: 50px;
+}
+
+html {
+    font-size: 4px;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    font-size: 4rem;
+    padding-top: var(--header-height);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+.logo{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 12rem;
+}
+
+.a{
+    color: #616161;
+}
+
+.nav1, .nav2{
+    font-family:'Railway';
+    font-size: 5rem;
+}
+
+.card_title{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_title1{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_description{
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 5rem;
+}
+
+.card_title_p{
+    font-family: 'Railway';
+    font-weight: 700;
+    font-size: 6rem;
+}
+
+.card_title1{
+    font-family: 'Railway';
+    font-weight: 600;
+    font-size: 6rem;
+}
+
+.card_title2{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  position: relative;
+
+  
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+
+  padding: calc(var(--size-base)*30) 0 calc(var(--size-base)*70);
+  row-gap: calc(var(--size-base)*25);
+  width: 100%;
+  max-width: var(--content-width-max);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.nav1 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav2 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav1 a, .nav2 a {
+            text-decoration: none;
+            color:#616161;
+            padding: calc(var(--size-base)*2) calc(var(--size-base)*4);            
+            transition: all 0.3s ease;
+        }
+
+        .nav1 a:hover, .nav2 a:hover {
+            color:#38ADD8;
+            transform: translateY(-2px);
+        }
+
+.nav2 img {
+    width: 6rem;
+    height: 6rem;    
+    transition: all 0.3s ease;
+    
+}
+
+.nav2 img:hover {    
+    transform: scale(1.1);
+}
+
+
+
+.nav2 .nav_link:hover {
+    color:#38ADD8;
+    transform: translateY(-2px);
+}
+
+.first-display_button {
+    display: grid;
+    place-items: center;
+}
+
+.projects {
+    display: grid;
+    margin-bottom: calc(var(--size-base)*20);
+}
+
+.projects_list {
+    display: grid;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--size-base)*5);
+    margin-bottom: calc(var(--size-base)*15);
+    justify-content: center;
+    max-width: calc( var(--size-base)*340);
+}
+
+.card_content {
+    display: grid;
+    justify-content: center;
+    gap: calc(var(--size-base)*4);
+    padding: calc(var(--size-base)*6);
+}
+
+.card_content1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--size-base)*4);
+    padding: calc(var(--size-base)*6);
+}
+
+
+
+.card_description {
+    
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 5rem;
+    color: #616161;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.btn {
+    padding: calc(var(--size-base)*1) calc(var(--size-base)*2);
+    border-radius: calc(var(--size-base)*8);
+    background-color: #616161;
+    color: white;
+    font-size: 6rem;
+    font-family: 'Railway';
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #38ADD8; 
+    transform: translateY(-2px);
+}
+
+.footer {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background-image: url('/src/assets/img/Footer.png');
+    padding: calc(var(--size-base)*15) calc(var(--size-base)*50);
+    margin-top: calc(var(--size-base)*10);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, auto);
+    gap: calc(var(--size-base)*15);
+    max-width: var(--content-width-max);
+    margin: 0 auto;
+}
+
+.footer .logo {
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 24rem;
+    color: #616161;
+}
+
+.copyright {
+    display: grid;
+    place-items: center;
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 4rem;
+    color: #616161;
+    margin: 0;
+    padding: calc(var(--size-base)*5) 0;
+}
+
+.footer_colomn ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: calc(var(--size-base)*2);
+}
+
+.footer_colomn li {
+    font-family: 'Railway';
+    font-weight: 400;
+    font-size: 4.5rem;
+    color: #616161;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.footer_colomn li:hover {
+    color: #38ADD8;
+}
+
+.socials {
+    display: grid;
+}

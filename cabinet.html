@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">    
+    <title>DELTA-Dream - Оформление заказа</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            font-family: 'Railway', sans-serif;
+        }
+        
+        .checkout-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .checkout-title {
+            font-family: 'Calypso', sans-serif;
+            font-weight: 500;
+            font-size: 10rem;
+            color: #616161;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-family: 'Railway', sans-serif;
+            font-weight: 600;
+            font-size: 6rem;
+            color: #616161;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .form-label {
+            display: block;
+            font-family: 'Railway', sans-serif;
+            font-weight: 500;
+            font-size: 5rem;
+            color: #616161;
+            margin-bottom: 10px;
+        }
+        
+        .form-control {
+            padding: 15px;
+            font-family: 'Railway', sans-serif;
+            font-size: 5rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #38ADD8;
+            box-shadow: 0 0 0 0.2rem rgba(56, 173, 216, 0.25);
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .order-items {
+            margin-bottom: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-family: 'Railway', sans-serif;
+            font-weight: 500;
+            font-size: 5rem;
+            color: #616161;
+        }
+        
+        .item-price {
+            font-family: 'Railway', sans-serif;
+            font-weight: 600;
+            font-size: 5rem;
+            color: #616161;
+        }
+        
+        .order-totals {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #d9d9d9;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Railway', sans-serif;
+            font-size: 5rem;
+            color: #616161;
+            margin-bottom: 10px;
+        }
+        
+        .total-label {
+            font-weight: 400;
+        }
+        
+        .total-value {
+            font-weight: 600;
+        }
+        
+        .grand-total {
+            font-size: 6rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #d9d9d9;
+        }
+     
+        .pay-btn {
+            padding: 20px;
+            background-color: #616161;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Railway', sans-serif;
+            font-weight: 600;
+            font-size: 6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .pay-btn:hover {
+            background-color: #38ADD8;
+            transform: translateY(-2px);
+        }
+        
+        .pay-btn:disabled {
+            background-color: #b6b6b6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .pay-btn:disabled:hover {
+            background-color: #b6b6b6;
+            transform: none;
+        }
+        
+        .empty-cart-message {
+            text-align: center;
+            padding: 60px 20px;
+            font-family: 'Railway', sans-serif;
+            font-size: 5.5rem;
+            color: #616161;
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            color: #38ADD8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 5rem;
+        }
+        
+        .continue-shopping:hover {
+            text-decoration: underline;
+        }
+        
+        .order-success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1050;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .success-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .success-message {
+            text-align: center;
+            font-family: 'Railway', sans-serif;
+            font-size: 5rem;
+            color: #616161;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .continue-btn {
+            padding: 15px 40px;
+            background-color: #38ADD8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Railway', sans-serif;
+            font-weight: 600;
+            font-size: 5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .continue-btn:hover {
+            background-color: #2a8db3;
+            transform: translateY(-2px);
+        }
+     
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .nav1, .nav2 {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .logo {
+            font-family: 'Calypso', sans-serif;
+            font-size: 6rem;
+            color: #000000;
+            margin-right: auto;
+            cursor: pointer;
+        }
+        
+        .nav_link {
+            color: #616161;
+            text-decoration: none;
+            font-family: 'Railway', sans-serif;
+            transition: color 0.3s ease;
+        }
+        
+        .nav_link:hover {
+            color: #38ADD8;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer_colomn ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer_colomn li {
+            margin-bottom: 0.5rem;
+            color: #616161;
+            font-family: 'Railway', sans-serif;
+            font-size: 3rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            color: #616161;
+            font-family: 'Railway', sans-serif;
+        }
+        
+        @font-face {
+            font-family: 'Calypso';
+            src: url('./src/assets/fonts/Calypso.ttf');
+            font-weight: 500;
+        }
+        
+        @font-face {
+            font-family: 'Railway';
+            src: url('./src/assets/fonts/Raleway-VariableFont_wght.ttf');
+            font-weight: 400;
+        }
+        
+        @font-face {
+            font-family: 'Railway';
+            src: url('./src/assets/fonts/Raleway-VariableFont_wght.ttf');
+            font-weight: 500;
+        }
+        
+        @font-face {
+            font-family: 'Railway';
+            src: url('./src/assets/fonts/Raleway-VariableFont_wght.ttf');
+            font-weight: 600;
+        }
+       
+        @media (max-width: 768px) {
+            .checkout-title {
+                font-size: 5rem;
+            }
+            
+            .section-title {
+                font-size: 4rem;
+            }
+            
+            .form-label,
+            .form-control,
+            .item-name,
+            .item-price,
+            .total-row,
+            .continue-shopping {
+                font-size: 3rem;
+            }
+            
+            .grand-total {
+                font-size: 4rem;
+            }
+            
+            .pay-btn {
+                font-size: 4rem;
+                padding: 15px;
+            }
+            
+            .empty-cart-message {
+                font-size: 3.5rem;
+            }
+            
+            .success-message,
+            .continue-btn {
+                font-size: 3rem;
+            }
+            
+            .nav1, .nav2 {
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .checkout-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .form-label,
+            .form-control,
+            .item-name,
+            .item-price,
+            .total-row,
+            .continue-shopping {
+                font-size: 2rem;
+            }
+            
+            .grand-total {
+                font-size: 2.5rem;
+            }
+            
+            .pay-btn {
+                font-size: 2.5rem;
+                padding: 12px;
+            }
+            
+            .empty-cart-message {
+                font-size: 2.5rem;
+            }
+            
+            .success-message,
+            .continue-btn {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <main class="page_content">
+           
+            <header class="header">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="logo me-5">DELTA-Dream</div>
+                            <nav class="nav1 d-none d-md-flex">
+                                <a href="katalog.html" class="nav_link me-4">Каталог</a>
+                                <a href="index.html" class="nav_link me-4">О нас</a>
+                                <a href="index.html" class="nav_link me-4">Блог</a>
+                                <a href="index.html" class="nav_link">Контакты</a>
+                            </nav>
+                        </div>
+                        <nav class="nav2 d-flex align-items-center">
+                            <a href="cart.html" class="nav_link me-4">
+                                <img src="./src/assets/icons/Корзина.svg" alt="корзина" width="24" height="24">
+                            </a>
+                            <img src="./src/assets/icons/Профиль.svg" alt="профиль" class="me-3" width="24" height="24">
+                        </nav>
+                    </div>
+
+                </div>
+            </header>
+            
+            
+            <div class="checkout-page">
+                <div class="container">
+                    <h1 class="checkout-title mb-5">ОФОРМЛЕНИЕ ЗАКАЗА</h1>
+                    
+                    <div class="row g-5">
+                        
+                        <div class="col-lg-6 ">
+                            <h2 class="section-title">Данные для доставки</h2>
+                            
+                            <form id="checkout-form">
+                                <div class="mb-4">
+                                    <label for="name" class="form-label">Имя и Фамилия</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Введите ваше имя и фамилию">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="phone" class="form-label">Телефон</label>
+                                    <input type="tel" id="phone" class="form-control" placeholder="Введите ваш номер телефона">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="address" class="form-label">Адрес доставки</label>
+                                    <textarea id="address" class="form-control" rows="3" placeholder="Город, улица, дом, квартира"></textarea>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="comment" class="form-label">Комментарий к заказу</label>
+                                    <textarea id="comment" class="form-control" rows="3" placeholder="Дополнительные пожелания к заказу"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        
+                        <div class="col-lg-6 checkout-order-section">
+                            <h2 class="section-title">Ваш заказ</h2>
+                            
+                            <div id="order-summary-container" class="mb-4">
+                            
+                            </div>
+                            
+                            <button id="pay-btn" class="pay-btn" onclick="processOrder()">
+                                <span>Оплатить</span>
+                                <span id="pay-total">0 ₽</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="order-success-modal" id="success-modal">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <img src="./src/assets/image/Заказ_оформлен.png" alt="Заказ оформлен" class="success-image img-fluid mb-4" id="success-image">
+                    <div class="success-message mb-4" id="success-text">
+                        Заказ успешно оформлен!<br>
+                        Мы свяжемся с вами для подтверждения
+                    </div>
+                    <button class="continue-btn" id="continue-btn">Продолжить покупки</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ <footer class="footer">
+            <div class="footer-content">
+                <div class="logo">DELTA-Dream</div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Для спальни</li>
+                        <li>Для ванны</li>
+                        <li>Для здоровья</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Подробнее</li>
+                        <li>Блог</li>
+                        <li>Контакты</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>VK</li>
+                        <li>Telegram</li>
+                        <li>Instagram</li>   
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">Ksenia Krylova 2025</div> 
+        </footer>          
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const orderSummaryContainer = document.getElementById('order-summary-container');
+            const payBtn = document.getElementById('pay-btn');
+            const payTotal = document.getElementById('pay-total');
+            const successModal = document.getElementById('success-modal');
+            const successText = document.getElementById('success-text');
+            const successImage = document.getElementById('success-image');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            function getCart() {
+                const cart = localStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : [];
+            }
+            
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            }
+            
+            function loadOrderSummary() {
+                const cart = getCart();
+                
+                if (cart.length === 0) {
+                    orderSummaryContainer.innerHTML = `
+                        <div class="empty-cart-message">
+                            <p>Ваша корзина пуста</p>
+                            <a href="katalog.html" class="continue-shopping">Перейти в каталог</a>
+                        </div>
+                    `;
+                    payBtn.disabled = true;
+                    payBtn.innerHTML = '<span>Добавьте товары в корзину</span>';
+                    return;
+                }
+                
+                let totalItems = 0;
+                let totalPrice = 0;
+                let itemsHTML = '';
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    totalItems += item.quantity;
+                    totalPrice += itemTotal;
+                    
+                    itemsHTML += `
+                        <div class="order-item">
+                            <span class="item-name">${item.name} × ${item.quantity}</span>
+                            <span class="item-price">${formatPrice(itemTotal)} ₽</span>
+                        </div>
+                    `;
+                });
+                
+                const deliveryPrice = totalPrice > 3000 ? 0 : 300;
+                const finalPrice = totalPrice + deliveryPrice;
+                
+                orderSummaryContainer.innerHTML = `
+                    <div class="order-summary">
+                        <div class="order-items">
+                            ${itemsHTML}
+                        </div>
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span class="total-label">Товары (${totalItems} шт.)</span>
+                                <span class="total-value">${formatPrice(totalPrice)} ₽</span>
+                            </div>
+                            <div class="total-row">
+                                <span class="total-label">Доставка</span>
+                                <span class="total-value">${deliveryPrice === 0 ? 'Бесплатно' : formatPrice(deliveryPrice) + ' ₽'}</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span class="total-label">Итого</span>
+                                <span class="total-value">${formatPrice(finalPrice)} ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                payTotal.textContent = formatPrice(finalPrice) + ' ₽';
+                payBtn.disabled = false;
+                payBtn.innerHTML = `
+                    <span>Оплатить</span>
+                    <span>${formatPrice(finalPrice)} ₽</span>
+                `;
+            }
+            
+            window.processOrder = function() {
+                const cart = getCart();
+                
+                if (cart.length === 0) {
+                    alert('Ваша корзина пуста');
+                    return;
+                }
+                
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const comment = document.getElementById('comment').value;
+                
+                if (!name || !phone || !address) {
+                    alert('Пожалуйста, заполните все обязательные поля: Имя и Фамилия, Телефон и Адрес доставки');
+                    return;
+                }
+                
+                const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const deliveryPrice = totalPrice > 3000 ? 0 : 300;
+                const finalPrice = totalPrice + deliveryPrice;
+                
+                const orderData = {
+                    customer: {
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        comment: comment
+                    },
+                    items: cart,
+                    total: finalPrice,
+                    date: new Date().toLocaleString('ru-RU'),
+                    orderId: 'ORD-' + Date.now()
+                };
+                
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                orders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                localStorage.removeItem('cart');
+                
+                successText.innerHTML = `Заказ №${orderData.orderId} успешно оформлен!<br>Сумма заказа: ${formatPrice(finalPrice)} ₽<br>Мы свяжемся с вами для подтверждения`;
+                successModal.style.display = 'flex';
+                
+                window.scrollTo(0, 0);
+            
+                continueBtn.onclick = function() {
+                    successModal.style.display = 'none';
+                    window.location.href = 'index.html';
+                };
+                
+                setTimeout(function() {
+                    if (successModal.style.display === 'flex') {
+                        successModal.style.display = 'none';
+                        window.location.href = 'index.html';
+                    }
+                }, 10000);
+            }
+            
+            loadOrderSummary();
+
+            const logo = document.querySelectorAll('.logo');
+            logo.forEach(function(logoItem) {
+                logoItem.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                logoItem.style.cursor = 'pointer';
+            });
+        
+            successModal.addEventListener('click', function(e) {
+                if (e.target === successModal) {
+                    successModal.style.display = 'none';
+                    window.location.href = 'index.html';
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && successModal.style.display === 'flex') {
+                    successModal.style.display = 'none';
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="cart.css">
+    <title>DELTA-Dream - Корзина</title>
+
+</head>
+<body>
+    <div class="page">
+        <main class="page_content">
+            <header class="header">
+                <nav class="nav1">
+                    <div class="logo">DELTA-Dream</div>    
+                    <a href="katalog.html" class="nav_link">Каталог</a>
+                    <a href="index.html" class="nav_link">О нас</a>
+                    <a href="index.html#blog" class="nav_link">Блог</a>
+                    <a href="index.html#contact" class="nav_link">Контакты</a>
+                </nav>
+                <nav class="nav2">
+                    <a href="cart.html" class="nav_link">
+                        <img src="./src/assets/icons/Корзина.svg" alt="корзина" class="first-display" id="cart-icon-header">
+                    </a>
+                    <img src="./src/assets/icons/Профиль.svg" alt="профиль" class="first-display">
+                    <a href="#" class="nav_link">Вход</a>
+                </nav>
+            </header>
+            
+            <div class="cart-page">
+                <div class="cart-header">
+                    <h1 class="cart-title">КОРЗИНА</h1>
+                </div>
+                
+                <div class="cart-items" id="cart-items-container">
+                </div>
+                
+                <div class="empty-cart" id="empty-cart-message">
+                    <p>Ваша корзина пуста</p>
+                    <a href="index.html#katalog" class="continue-shopping">Продолжить покупки</a>
+                </div>
+                
+                <div class="cart-summary" id="cart-summary">
+                    <div class="cart-totals">
+                        <div class="total-row">
+                            <span class="total-label" id="total-items-label">Товары (0 шт.)</span>
+                            <span class="total-value" id="total-items-price">0 ₽</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="total-label">Доставка</span>
+                            <span class="total-value">Бесплатно</span>
+                        </div>
+                        <div class="total-row grand-total">
+                            <span class="total-label">Итого</span>
+                            <span class="total-value" id="grand-total-price">0 ₽</span>
+                        </div>
+                    </div>
+                    <button class="checkout-btn" id="checkout-btn" disabled>
+                        <span>Оформить заказ</span>
+                        <span class="total-amount" id="checkout-total">0 ₽</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo">DELTA-Dream</div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>Для спальни</li>
+                    <li>Для ванны</li>
+                    <li>Для здоровья</li>
+                </ul>
+            </div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>Подробнее</li>
+                    <li>Блог</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer_colomn">
+                <ul>
+                    <li>VK</li>
+                    <li>Telegram</li>
+                    <li>Instagram</li>   
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">Ksenia Krylova 2025</div> 
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartSummary = document.getElementById('cart-summary');
+            const totalItemsLabel = document.getElementById('total-items-label');
+            const totalItemsPrice = document.getElementById('total-items-price');
+            const grandTotalPrice = document.getElementById('grand-total-price');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const cartIconHeader = document.getElementById('cart-icon-header');
+           
+            function getCart() {
+                const cart = localStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : [];
+            }
+
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+   
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            }
+
+            function getNoun(number, one, two, five) {
+                let n = Math.abs(number);
+                n %= 100;
+                if (n >= 5 && n <= 20) {
+                    return five;
+                }
+                n %= 10;
+                if (n === 1) {
+                    return one;
+                }
+                if (n >= 2 && n <= 4) {
+                    return two;
+                }
+                return five;
+            }
+            
+            function loadCartFromStorage() {
+                const cart = getCart();
+                
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    cartSummary.style.display = 'none';
+                    cartItemsContainer.innerHTML = '';
+                    return;
+                }
+                
+                emptyCartMessage.style.display = 'none';
+                cartSummary.style.display = 'flex';
+                cartItemsContainer.innerHTML = '';
+                
+                cart.forEach(item => {
+                    const itemHTML = `
+                        <div class="cart-item" data-id="${item.id}" data-price="${item.price}">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title-price">
+                                    <h3 class="cart-item-title">${item.name}</h3>
+                                    <div class="cart-item-price">${formatPrice(item.price)} ₽</div>
+                                </div>
+                                
+                                <div class="cart-item-controls">
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn minus-btn">-</button>
+                                        <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="10">
+                                        <button class="quantity-btn plus-btn">+</button>
+                                    </div>
+                                    <div class="item-total-price">${formatPrice(item.price * item.quantity)} ₽</div>
+                                    <button class="remove-btn">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+                });
+                
+                attachEventListeners();
+                
+                updateCartTotals();
+            }
+            
+            function updateCartTotals() {
+                let totalItems = 0;
+                let totalPrice = 0;
+                
+                document.querySelectorAll('.cart-item').forEach(item => {
+                    const priceElement = item.querySelector('.cart-item-price');
+                    const quantityInput = item.querySelector('.quantity-input');
+                    
+                    if (priceElement && quantityInput) {
+                        const price = parseFloat(priceElement.textContent.replace(/\s/g, '').replace('₽', ''));
+                        const quantity = parseInt(quantityInput.value);
+                        
+                        totalItems += quantity;
+                        totalPrice += price * quantity;
+                    }
+                });
+               
+                totalItemsPrice.textContent = formatPrice(totalPrice) + ' ₽';
+                grandTotalPrice.textContent = formatPrice(totalPrice) + ' ₽';
+                checkoutTotal.textContent = formatPrice(totalPrice) + ' ₽';
+                
+                totalItemsLabel.textContent = `Товары (${totalItems} ${getNoun(totalItems, 'шт.', 'шт.', 'шт.')})`;
+                
+                if (totalItems === 0) {
+                    checkoutBtn.disabled = true;
+                    checkoutBtn.innerHTML = '<span>Добавьте товары в корзину</span>';
+                } else {
+                    checkoutBtn.disabled = false;
+                    checkoutBtn.innerHTML = `
+                        <span>Оформить заказ</span>
+                        <span class="total-amount">${formatPrice(totalPrice)} ₽</span>
+                    `;
+                }
+            }
+            
+            function updateCartInStorage() {
+                const cartItems = document.querySelectorAll('.cart-item');
+                const cart = [];
+                
+                cartItems.forEach(item => {
+                    const id = parseInt(item.getAttribute('data-id'));
+                    const price = parseFloat(item.getAttribute('data-price'));
+                    const quantity = parseInt(item.querySelector('.quantity-input').value);
+                    const name = item.querySelector('.cart-item-title').textContent;
+                    const image = item.querySelector('.cart-item-image').src;
+                    
+                    cart.push({
+                        id: id,
+                        name: name,
+                        price: price,
+                        image: image,
+                        quantity: quantity
+                    });
+                });
+                
+                saveCart(cart);
+            }
+            
+            function attachEventListeners() {
+
+                document.querySelectorAll('.minus-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const input = this.nextElementSibling;
+                        let value = parseInt(input.value);
+                        if (value > 1) {
+                            input.value = value - 1;
+                            const item = this.closest('.cart-item');
+                            updateItemTotal(item);
+                            updateCartTotals();
+                            updateCartInStorage();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.plus-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const input = this.previousElementSibling;
+                        let value = parseInt(input.value);
+                        if (value < 10) {
+                            input.value = value + 1;
+                            const item = this.closest('.cart-item');
+                            updateItemTotal(item);
+                            updateCartTotals();
+                            updateCartInStorage();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        let value = parseInt(this.value);
+                        if (value < 1) {
+                            this.value = 1;
+                        } else if (value > 10) {
+                            this.value = 10;
+                        }
+                        
+                        const item = this.closest('.cart-item');
+                        updateItemTotal(item);
+                        updateCartTotals();
+                        updateCartInStorage();
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        const item = this.closest('.cart-item');
+                        updateItemTotal(item);
+                        updateCartTotals();
+                        updateCartInStorage();
+                    });
+                    
+                    input.addEventListener('keypress', function(e) {
+                        const charCode = e.which ? e.which : e.keyCode;
+                        if (charCode < 48 || charCode > 57) {
+                            e.preventDefault();
+                            return false;
+                        }
+                        return true;
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const cartItem = this.closest('.cart-item');
+                        cartItem.style.opacity = '0.5';
+                        cartItem.style.transform = 'translateX(-20px)';
+                        
+                        setTimeout(() => {
+                            cartItem.remove();
+                            updateCartTotals();
+                            updateCartInStorage();
+                            checkEmptyCart();
+                        }, 300);
+                    });
+                });
+            }
+            
+            function calculateItemTotal(price, quantity) {
+                return price * quantity;
+            }
+            
+            function updateItemTotal(item) {
+                const priceElement = item.querySelector('.cart-item-price');
+                const quantityInput = item.querySelector('.quantity-input');
+                const itemTotalElement = item.querySelector('.item-total-price');
+                
+                if (priceElement && quantityInput && itemTotalElement) {
+                    const price = parseFloat(priceElement.textContent.replace(/\s/g, '').replace('₽', ''));
+                    const quantity = parseInt(quantityInput.value);
+                    const itemTotal = calculateItemTotal(price, quantity);
+                    
+                    itemTotalElement.textContent = formatPrice(itemTotal) + ' ₽';
+                }
+            }
+            
+            function checkEmptyCart() {
+                const cartItems = document.querySelectorAll('.cart-item');
+                
+                if (cartItems.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    cartSummary.style.display = 'none';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cartSummary.style.display = 'flex';
+                }
+            }
+            
+            checkoutBtn.addEventListener('click', function() {
+                if (!this.disabled) {
+
+                    window.location.href = 'cabinet.html';
+                }
+            });
+            
+            loadCartFromStorage();
+            
+
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                logo.style.cursor = 'pointer';
+            }
+        });
+    </script>
+</body>
+</html>

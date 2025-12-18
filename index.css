@@ -1,0 +1,668 @@
+@font-face {
+    font-family: 'CAlYPSO';
+    src: url(./src/assets/fonts/Calypso.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Railway';
+    src: url(./src/assets/fonts/Raleway-VariableFont_wght.ttf);
+    font-weight: 600;
+}
+
+:root {
+    --gray:#D9D9D9;
+    --dark-grey:#616161;
+    --size-base: 4px;
+    --content-with-max:1360px;
+    --header-height: 50px;
+}
+
+.add-to-cart-animation {
+            animation: addToCart 0.3s ease;
+        }
+        
+        @keyframes addToCart {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+                background-color: #2a8db3;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .add-to-cart-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card_title1 {
+            font-family: 'Railway';
+            font-weight: 600;
+            font-size: 6rem;
+            text-align: center;
+            width: 100%;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+   
+        .card_title1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .card_title1 a:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+ 
+        .category-card {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+html {
+    font-size: 4px;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    font-size: 4rem;
+    padding-top: var(--header-height);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+
+.logo{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 12rem;
+}
+
+.a{
+    color: #616161;
+}
+
+.nav1, .nav2{
+    font-family:'Railway';
+    font-size: 5rem;
+}
+
+.card_title{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_title1{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+.card_description{
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 5rem;
+}
+.data-product-price{
+    font-family: 'Railway';
+
+}
+.add-to-cart-btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+.card_title_p{
+    font-family: 'Railway';
+    font-weight: 700;
+    font-size: 6rem;
+
+}
+
+.card_title1{
+    font-family: 'Railway';
+    font-weight: 600;
+    font-size: 6rem;
+}
+
+
+.card_title2{
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 16rem;
+}
+
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  position: relative;
+
+  
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+
+  padding: calc(var(--size-base)*30) 0 calc(var(--size-base)*70);
+  row-gap: calc(var(--size-base)*25);
+
+  width: 100%;
+  max-width: var(--content-width-max);
+
+  
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.nav1 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav2 {
+    display: flex;
+    align-items: center;
+    column-gap:calc(var(--size-base)*10);
+}
+
+.nav1 a, .nav2 a {
+            text-decoration: none;
+            color:#616161;
+            padding: calc(var(--size-base)*2) calc(var(--size-base)*4);
+            
+            transition: all 0.3s ease;
+        }
+
+        .nav1 a:hover, .nav2 a:hover {
+            color:#38ADD8;
+            transform: translateY(-2px);
+        }
+
+.nav2 img {
+    width: 6rem;
+    height: 6rem;    
+    transition: all 0.3s ease;
+    
+}
+
+.nav2 img:hover {    
+    transform: scale(1.1);
+}
+
+
+
+.nav2 .nav_link:hover {
+    color:#38ADD8;
+    transform: translateY(-2px);
+}
+
+.first-display {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+}
+
+.projects_list {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(var(--size-base)*340);
+
+}
+.card {
+            display: flex;
+            gap: 20px; 
+            margin-bottom: 100px; 
+        }
+
+.card_title2{
+    display: flex;
+    justify-content: center;
+}
+
+.card_content {
+            display: flex;
+            flex-direction: column;  
+        }
+
+.card_content1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+.card_title1 {
+            text-align: center; 
+            width: 100%;
+        } 
+            .card_title1:hover {
+            color:#38ADD8;
+            transform: translateY(-2px);
+        
+        }
+
+
+.btn {
+    padding: calc(var(--size-base)*4) calc(var(--size-base)*8);
+    border: none;
+    border-radius: calc(var(--size-base)*8); 
+    background-color:#616161;
+    color:white;
+    font-size: 6rem;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #38ADD8; 
+    transform: translateY(-2px);
+    
+}
+
+.faq-container {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.faq-image {
+    flex: 0 0 400px;
+}
+
+.faq-section {
+    flex: 1;
+    width: 100%;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'Railway';
+    font-weight: 600;
+    font-size: 5rem;
+    color: #616161;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.faq-question:hover {
+    color: #38ADD8;
+}
+
+.faq-question::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.faq-icon {
+    font-family: 'Railway';
+    font-weight: 400;
+    font-size: 6rem;
+    color: #616161;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+.faq-question.active .faq-icon {
+    color: #38ADD8;
+    transform: rotate(0deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer p {
+    padding: 20px 0;
+    margin: 0;
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 4.5rem;
+    color: #616161;
+
+}
+.footer {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background-image: url('/src/assets/img/Footer.png');
+    padding: calc(var(--size-base)*15) calc(var(--size-base)*50);
+    margin-top: calc(var(--size-base)*10);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, auto);
+    gap: calc(var(--size-base)*15);
+    max-width: var(--content-width-max);
+    margin: 0 auto;
+}
+
+.footer .logo {
+    font-family: 'CALYPSO';
+    font-weight: 500;
+    font-size: 24rem;
+    color: #616161;
+}
+
+.copyright {
+    display: grid;
+    place-items: center;
+    font-family: 'Railway';
+    font-weight: 300;
+    font-size: 4rem;
+    color: #616161;
+    margin: 0;
+    padding: calc(var(--size-base)*5) 0;
+}
+
+.footer_colomn ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: calc(var(--size-base)*2);
+}
+
+.footer_colomn li {
+    font-family: 'Railway';
+    font-weight: 400;
+    font-size: 4.5rem;
+    color: #616161;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.footer_colomn li:hover {
+    color: #38ADD8;
+}
+
+.socials {
+    display: grid;
+}
+.copyright {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+        }
+
+@media (max-width: 1440px) {
+    .page {
+        padding: 0 20px;
+    }
+    
+    .header {
+        padding: 15px 0;
+    }
+    
+    .first-display img {
+        max-height: 500px;
+        object-fit: cover;
+    }
+    
+    .projects_list {
+        padding: 0 15px;
+    }
+    
+    .card {
+        gap: 25px;
+    }
+    
+    .card_content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .nav1, .nav2 {
+        gap: 20px;
+    }
+    
+    .nav_link {
+        font-size: 15px;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .card_title, .card_title2 {
+        font-size: 28px;
+    }
+    
+    .card_title_p {
+        font-size: 19px;
+    }
+    
+    .card_description {
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    
+    .faq-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .faq-image {
+        width: 100%;
+    }
+    
+    .faq-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav1, .nav2 {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav1 {
+        order: 2;
+    }
+    
+    .nav2 {
+        order: 1;
+        justify-content: flex-end;
+        padding-right: 20px;
+    }
+    
+    .first-display img {
+        max-height: 400px;
+    }
+    
+    .card {
+        flex-direction: column;
+    }
+    
+    .card:not(:first-of-type) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .card:not(:first-of-type) .card_content {
+        flex: 1 1 calc(50% - 20px);
+        min-width: 250px;
+    }
+    
+    .card_content1 {
+        flex-direction: column;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+    
+    .footer-content {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    
+    .footer_colomn {
+        flex: 1 1 calc(33.333% - 30px);
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 0 10px;
+    }
+    
+    .nav1, .nav2 {
+        gap: 15px;
+    }
+    
+    .nav_link {
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .first-display img {
+        max-height: 300px;
+    }
+    
+    .card_title, .card_title2 {
+        font-size: 24px;
+    }
+    
+    .card:not(:first-of-type) .card_content {
+        flex: 1 1 100%;
+    }
+    
+    .faq-question {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .faq-answer {
+        padding: 0 15px 15px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer_colomn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav1, .nav2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .nav_link {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+    
+    .first-display img {
+        max-height: 250px;
+    }
+    
+    .card_title, .card_title2 {
+        font-size: 22px;
+        text-align: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .copyright {
+        font-size: 14px;
+    }
+}

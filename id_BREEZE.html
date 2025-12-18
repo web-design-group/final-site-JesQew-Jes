@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="id.css">
+    <title>DELTA-Dream</title>
+</head>
+<body>
+    <div class="page">
+        <main class="page_content">
+            <header class="header">
+                <nav class="nav1">
+                    <div class="logo">DELTA-Dream</div>    
+                    <a href="katalog.html" class="nav_link">Каталог</a>
+                    <a href="index.html" class="nav_link">О нас</a>
+                    <a href="index.html" class="nav_link">Блог</a>
+                    <a href="index.html" class="nav_link">Контакты</a>
+                </nav>
+                <nav class="nav2">
+                    <img src="./src/assets/icons/Корзина.svg" alt="корзина" class="first-display" id="cart-icon">
+                    <img src="./src/assets/icons/Профиль.svg" alt="профиль" class="first-display">
+                    <a href="#" class="nav_link">Вход</a>
+                </nav>
+            </header>
+            
+
+            <div class="projects" id="katalog">
+                <div class="projects_list">
+                    <div class="card">
+                        <div class="card_content">
+                            <img src="src/assets/image/подушка_бриз.jpg" alt="BREEZE" class="card_img">
+                            
+                        </div>
+                        <div class="card_content">
+                            
+                            <h4 class="card_title_p">Подушка Анатомическая Breeze</h4>
+                            <div class="card_content1">
+                            <p class="card_description">Тип подушки</p>
+                            <p class="card_description">Трансформер/Двухсторонняя</p>
+                            <p class="card_description">Размер</p>
+                            <p class="card_description">69Х47</p>
+                            <p class="card_description">Высота</p>
+                            <p class="card_description">Высокая (24 см)</p>
+                            <p class="card_description">Положение сна</p>
+                            <p class="card_description">На животе/любое</p>
+                            <p class="card_description">Жесткость</p>
+                            <p class="card_description">Разная жесткость сторон</p>
+                            </div>
+                            <button class="btn btn_round" id="add-to-cart-btn">3 999 ₽</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+         
+    </div>
+    <footer class="footer">
+            <div class="footer-content">
+                <div class="logo">DELTA-Dream</div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Для спальни</li>
+                        <li>Для ванны</li>
+                        <li>Для здоровья</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>Подробнее</li>
+                        <li>Блог</li>
+                        <li>Контакты</li>
+                    </ul>
+                </div>
+                <div class="footer_colomn">
+                    <ul>
+                        <li>VK</li>
+                        <li>Telegram</li>
+                        <li>Instagram</li>   
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">Ksenia Krylova 2025</div> 
+        </footer>          
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const currentProduct = {
+                id: 3,
+                name: 'Анатомическая подушка Breeze',
+                price: 3999,
+                image: 'src/assets/img/Photo.jpg'
+            };
+
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+            const cartIcon = document.getElementById('cart-icon');
+
+            function getCart() {
+                const cart = localStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : [];
+            }
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+            function addToCart(product) {
+                const cart = getCart();
+                const existingItemIndex = cart.findIndex(item => item.id === product.id);
+                
+                if (existingItemIndex !== -1) {
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    });
+                }
+                saveCart(cart);
+            }
+
+            function goToCart() {
+
+                window.location.href = 'cart.html';
+            }
+            addToCartBtn.addEventListener('click', function() {
+                addToCart(currentProduct);
+
+            });
+
+            cartIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToCart();
+            });
+        });
+
+    </script>
+</body>
+</html>
